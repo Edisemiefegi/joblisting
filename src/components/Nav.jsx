@@ -15,7 +15,7 @@ function Nav() {
         {/* Navigation Links */}
         <div className="hidden md:flex gap-8 items-center">
           <NavLink
-            to="/"
+            to="/home"
             className={({ isActive }) =>
               `text-base font-medium ${
                 isActive ? "text-red-500 underline" : "text-gray-600"
