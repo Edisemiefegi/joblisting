@@ -11,6 +11,7 @@ import {
   where,
   onSnapshot,
   deleteDoc,
+  getDoc,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -37,4 +38,5 @@ export {
   where,
   onSnapshot,
   deleteDoc,
+  getDoc,
 };

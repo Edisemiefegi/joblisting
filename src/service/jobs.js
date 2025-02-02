@@ -9,6 +9,7 @@ import {
   onSnapshot,
   deleteDoc,
   doc,
+  getDoc,
 } from "./firebase";
 
 export const addJob = async (job) => {
@@ -17,7 +18,7 @@ export const addJob = async (job) => {
     jobName: job.jobName,
     jobDescription: job.jobDescription,
     company: job.company,
-    companyName: job.companyDescription,
+    companyDescription: job.companyDescription,
     salary: job.salary,
     location: job.location,
     created: Date.now(),
@@ -50,4 +51,37 @@ export const getAllJobs = (setJobs) => {
 
 export const deleteJob = async (id) => {
   await deleteDoc(doc(db, "jobs", id));
+};
+
+export const editJob = async (job) => {
+  if (!job.id) {
+    console.error("Invalid job data: Missing ID");
+    return;
+  }
+
+  try {
+    const docRef = doc(db, "jobs", job.id);
+    const docSnap = await getDoc(docRef);
+
+    if (!docSnap.exists()) {
+      console.error("Job not found!");
+      return;
+    }
+
+    await updateDoc(docRef, {
+      company: job.company,
+      companyDescription: job.companyDescription,
+      email: job.email,
+      jobName: job.jobName,
+      jobDescription: job.jobDescription,
+      phone: job.phone || "",
+      location: job.location,
+      salary: job.salary,
+      type: job.type,
+    });
+
+    console.log("Job updated successfully!");
+  } catch (error) {
+    console.error("Error updating job:", error);
+  }
 };

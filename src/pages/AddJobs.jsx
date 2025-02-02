@@ -1,9 +1,12 @@
-import FieldsInput from "../components/Ui/FieldsInput";
+import { useNavigate } from "react-router-dom";
 import { addJob } from "../service/jobs";
+import Form from "../components/Ui/Form";
 
 import React, { useEffect, useState } from "react";
 
 function AddJobs() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     type: "",
     jobName: "",
@@ -111,40 +114,35 @@ function AddJobs() {
     },
   ];
 
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async () => {
-    await addJob(formData);
-    console.log(formData, "formdatat");
-
-    setFormData({});
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      setLoading(true);
+      await addJob(formData);
+      console.log(formData, "formdatat");
+      alert("job successfully added ");
+      navigate("/jobs");
+    } catch (error) {
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        handleSubmit();
-      }}
-      className="max-w-md mx-auto shadow-md my-12 p-8 rounded-md"
-    >
-      <p className="text-center font-medium text-lg">Add Job</p>
-
-      <FieldsInput
-        fields={fields}
-        onChange={handleChange}
-        formData={formData}
-      />
-
-      <button
-        type="submit"
-        className="text-sm bg-red-600 px-3 py-1 rounded-sm cursor-pointer text-white"
-      >
-        Submit
-      </button>
-    </form>
+    <Form
+      onSubmit={handleSubmit}
+      onChange={handleChange}
+      loading={loading}
+      text="Add Job"
+      fields={fields}
+      formData={formData}
+    />
   );
 }
 
