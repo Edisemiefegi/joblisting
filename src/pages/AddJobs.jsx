@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { addJob } from "../service/jobs";
-import Form from "../components/Ui/Form";
+import { addJob } from "@/service/jobs";
+import Form from "@/components/Ui/Form";
 
 import React, { useEffect, useState } from "react";
 

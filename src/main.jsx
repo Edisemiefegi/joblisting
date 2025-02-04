@@ -6,13 +6,13 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import Default from "./layouts/Default.jsx";
+import Default from "@/layouts/Default.jsx";
 // import Home from "../src/pages/home.jsx";
-import AddJobs from "./pages/AddJobs.jsx";
-import { JobProvider } from "./context/Job.jsx";
-import Jobs from "./pages/Jobs/Jobs.jsx";
-import Jobid from "./pages/Jobs/Jobid.jsx";
-import Dashboard from "./pages/Dashboard.jsx";
+import AddJobs from "@/pages/AddJobs.jsx";
+import { JobProvider } from "@/context/Job.jsx";
+import Jobs from "@/pages/Jobs/Jobs.jsx";
+import Jobid from "@/pages/Jobs/Jobid.jsx";
+import Dashboard from "@/pages/Dashboard.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

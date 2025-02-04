@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import JobCard from "../../components/Ui/JobCard";
-import Section from "../../components/Ui/Section";
-import { useJob } from "../../context/Job";
+import JobCard from "@/components/Ui/JobCard";
+import Section from "@/components/Ui/Section";
+import { useJob } from "@/context/Job";
 import { useNavigate } from "react-router-dom";
 
 function Jobs() {

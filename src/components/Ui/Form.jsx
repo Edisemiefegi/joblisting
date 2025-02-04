@@ -1,5 +1,5 @@
 import React from "react";
-import FieldsInput from "../../components/Ui/FieldsInput";
+import FieldsInput from "@/components/Ui/FieldsInput";
 
 function Form({ update, onChange, formData, fields, onSubmit, loading, text }) {
   return (

@@ -1,10 +1,10 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { useJob } from "../../context/Job";
-import Section from "../../components/ui/Section";
-import { deleteJob, editJob } from "../../service/jobs";
+import { useJob } from "@/context/Job";
+import Section from "@/components/ui/Section";
+import { deleteJob, editJob } from "@/service/jobs";
 import { useEffect, useState } from "react";
-import DetailCard from "../../components/Ui/DetailCard";
-import Form from "../../components/Ui/Form";
+import DetailCard from "@/components/Ui/DetailCard";
+import Form from "@/components/Ui/Form";
 
 const Jobid = () => {
   const { jobid } = useParams();
