@@ -4,7 +4,7 @@ function JobCard({ job, onClick }) {
   const [isExpanded, setisExpanded] = useState(false);
 
   return (
-    <div className="p-6 rounded-b-md space-y-6 shadow-md">
+    <div className="p-6 bg-white rounded-b-md space-y-6 shadow-md">
       <p className="text-gray-600 text-sm">{job?.type}</p>
       <p className="font-medium">{job.jobName}</p>
       <p className={isExpanded ? "" : "truncate"}>{job.jobDescription}</p>

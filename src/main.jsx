@@ -6,7 +6,7 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import Default from "./layouts/default.jsx";
+import Default from "./layouts/Default.jsx";
 // import Home from "../src/pages/home.jsx";
 import AddJobs from "./pages/AddJobs.jsx";
 import { JobProvider } from "./context/Job.jsx";
