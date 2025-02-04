@@ -1,5 +1,5 @@
 import React from "react";
-import Section from "./ui/section";
+import Section from "./Ui/Section";
 import { NavLink } from "react-router-dom";
 
 function Nav() {
