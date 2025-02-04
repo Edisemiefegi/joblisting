@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import JobCard from "../components/Ui/JobCard";
 import Section from "../components/Ui/Section";
 import { useJob } from "../context/Job";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function Home() {
   const { jobs } = useJob();
@@ -42,13 +42,16 @@ function Home() {
       </div>
 
       <Section className="grid md:grid-cols-2 grid-cols-1 gap-5 flex-wrap">
-        {data.map((item) => (
-          <div className="space-y-3 p-6  bg-gray-100">
+        {data.map((item, index) => (
+          <div key={index} className="space-y-3 p-6  bg-gray-100">
             <h1 className="font-medium text-lg">{item.for}</h1>
             <p>{item.text}</p>
-            <button className="text-white bg-black text-sm rounded-md px-4 py-2">
+            <NavLink
+              to={item.path}
+              className="text-white bg-black text-sm rounded-md px-4 py-2"
+            >
               {item.btn}
-            </button>
+            </NavLink>
           </div>
         ))}
       </Section>

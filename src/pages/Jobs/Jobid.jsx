@@ -125,7 +125,7 @@ const Jobid = () => {
       fieldType: "input",
       props: {
         type: "email",
-        inputmode: "email",
+        inputMode: "email",
         required: true,
       },
       placeholder: "Enter company email...",
