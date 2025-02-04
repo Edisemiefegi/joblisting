@@ -12,7 +12,7 @@ import AddJobs from "./pages/AddJobs.jsx";
 import { JobProvider } from "./context/Job.jsx";
 import Jobs from "./pages/Jobs/Jobs.jsx";
 import Jobid from "./pages/Jobs/Jobid.jsx";
-import Home from "./pages/Home.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,7 +21,7 @@ const router = createBrowserRouter(
       <Route path="/add-jobs" element={<AddJobs />} />
       <Route path="jobs/" element={<Jobs />} />
       <Route path="jobs/:jobid" element={<Jobid />} />
-      <Route path="/home" element={<Home />} />
+      <Route path="/home" element={<Dashboard />} />
 
       <Route
         path="*"

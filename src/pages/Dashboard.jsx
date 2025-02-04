@@ -4,7 +4,7 @@ import Section from "../components/Ui/Section";
 import { useJob } from "../context/Job";
 import { NavLink, useNavigate } from "react-router-dom";
 
-function Home() {
+function Dashboard() {
   const { jobs } = useJob();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
@@ -79,4 +79,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Dashboard;
