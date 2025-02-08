@@ -213,6 +213,7 @@ const Jobid = () => {
         </Section>
       ) : (
         <Form
+          className="bg-white"
           onSubmit={handleEditSubmit}
           onChange={handleChange}
           loading={loading}

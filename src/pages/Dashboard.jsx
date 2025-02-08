@@ -3,9 +3,11 @@ import JobCard from "@/components/Ui/JobCard";
 import Section from "@/components/Ui/Section";
 import { useJob } from "@/context/Job";
 import { NavLink, useNavigate } from "react-router-dom";
+import { getUsers } from "../service/jobs";
 
 function Dashboard() {
-  const { jobs } = useJob();
+  const { jobs, users } = useJob();
+
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -16,6 +18,10 @@ function Dashboard() {
       console.log(jobs, "susuu");
     }
   }, [jobs]);
+
+  useEffect(() => {
+    console.log(users, "iyrdtr");
+  }, [users]);
 
   const data = [
     {
@@ -34,13 +40,13 @@ function Dashboard() {
 
   return (
     <div>
+      {/* {users} */}
       <div className="bg-blue-600 text-white text-center w-full py-12 space-y-4">
         <h1 className="text-3xl font-medium">Find Jobs</h1>
         <p className="text-sm">
           Find the perfect job that fits your skills and needs
         </p>
       </div>
-
       <Section className="grid md:grid-cols-2 grid-cols-1 gap-5 flex-wrap">
         {data.map((item, index) => (
           <div key={index} className="space-y-3 p-6  bg-gray-100">
@@ -55,7 +61,6 @@ function Dashboard() {
           </div>
         ))}
       </Section>
-
       <div className="bg-neutral-100 w-full ">
         <h1 className="text-center py-6 font-medium text-xl">Browse Jobs</h1>
         <p className="text-center">{loading}</p>

@@ -10,7 +10,70 @@ import {
   deleteDoc,
   doc,
   getDoc,
+  createUserWithEmailAndPassword,
+  auth,
+  setDoc,
+  getDocs,
+  signInWithEmailAndPassword,
 } from "./firebase";
+
+export const register = async (form, setLoggedinUser) => {
+  try {
+    const useCredential = await createUserWithEmailAndPassword(
+      auth,
+      form.email,
+      form.password
+    );
+    const userid = useCredential.user.uid;
+    const user = {
+      jobs: [],
+      id: userid,
+      email: form.email,
+      password: form.password,
+    };
+    await setDoc(doc(db, "users", userid), user);
+    setLoggedinUser(user);
+    console.log(user, "usr");
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const loginFunc = async (form, setLoggedinUser) => {
+  try {
+    const useCredential = signInWithEmailAndPassword(
+      auth,
+      form.email,
+      form.password
+    );
+    const id = useCredential.user.uid;
+
+    const docRef = doc(db, "users", id);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      const userData = docSnap.data();
+      setLoggedinUser(userData);
+      console.log(userData, "login");
+    } else {
+      console.log("No such document!");
+      return null;
+    }
+  } catch (error) {}
+};
+
+export const getUsers = async (setUsers) => {
+  const q = query(collection(db, "users"));
+  const users = [];
+
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    users.push(doc.data());
+    setUsers(users);
+    // doc.data() is never undefined for query doc snapshots
+    console.log(doc.id, users, "user fetch");
+  });
+};
 
 export const addJob = async (job) => {
   const details = {

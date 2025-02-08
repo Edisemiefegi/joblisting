@@ -12,7 +12,14 @@ import {
   onSnapshot,
   deleteDoc,
   getDoc,
+  getDocs,
 } from "firebase/firestore";
+
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBYhzqB15OEWqAquDuN9ok6uyPkIwyqPIQ",
@@ -25,6 +32,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
 
 export {
   app,
@@ -39,4 +47,8 @@ export {
   onSnapshot,
   deleteDoc,
   getDoc,
+  auth,
+  getDocs,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
 };

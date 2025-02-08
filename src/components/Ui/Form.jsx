@@ -1,11 +1,19 @@
 import React from "react";
 import FieldsInput from "@/components/Ui/FieldsInput";
 
-function Form({ update, onChange, formData, fields, onSubmit, loading, text }) {
+function Form({
+  className,
+  onChange,
+  formData,
+  fields,
+  onSubmit,
+  loading,
+  text,
+}) {
   return (
     <form
       onSubmit={onSubmit}
-      className="max-w-md mx-auto bg-white shadow-md my-12 p-8 rounded-md"
+      className={`max-w-md mx-auto  shadow-md my-12 p-8 rounded-md ${className}`}
     >
       <p className="text-center font-medium text-lg">{text}</p>
 

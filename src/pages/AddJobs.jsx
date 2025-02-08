@@ -136,6 +136,7 @@ function AddJobs() {
 
   return (
     <Form
+      className="bg-white"
       onSubmit={handleSubmit}
       onChange={handleChange}
       loading={loading}
